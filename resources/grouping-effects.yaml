@@ -31,12 +31,176 @@ intj:
   attributes-ordinal:
     physical: 3
     social: 5
-    mental: 7
+    mental: 4
   abilities-ordinal:
-    talents: 9
+    talents: 5
     skills: 5
-    knowledges: 13
+    knowledges: 11
+
+  misc:
+    ability-accumulator: 50
   
   sheet:
     attributes:
-      intelligence: 3
+      mental:
+        intelligence: 3
+        wits: 2
+
+    abilities:
+      talents:
+        expression: 1
+        leadership: 2
+        subterfuge: 1
+      knowledges:
+        academics: 2
+
+estj:
+  attributes-ordinal:
+    physical: 7
+    social: 5
+    mental: 3
+  abilities-ordinal:
+    talents: 13
+    skills: 9
+    knowledges: 5
+
+istj:
+  attributes-ordinal:
+    physical: 5
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 11
+
+  misc:
+    ability-accumulator: 50
+
+  sheet:
+    attributes:
+      mental:
+        perception: 2
+    abilities:
+      knowledges:
+        academics: 2
+
+esfj:
+  attributes-ordinal:
+    physical: 5
+    social: 7
+    mental: 3
+  abilities-ordinal:
+    talents: 13
+    skills: 9
+    knowledges: 5
+
+isfj:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 13
+    skills: 9
+    knowledges: 5
+
+enfj:
+  attributes-ordinal:
+    physical: 3
+    social: 7
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
+
+infj:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
+
+estp:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
+
+istp:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
+
+esfp:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
+
+isfp:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
+
+enfp:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
+
+infp:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
+
+entp:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
+
+intp:
+  attributes-ordinal:
+    physical: 7
+    social: 3
+    mental: 5
+  abilities-ordinal:
+    talents: 5
+    skills: 9
+    knowledges: 13
