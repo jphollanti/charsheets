@@ -36,9 +36,12 @@
 (defn generate
   "Creates a new sheet."
   [dichotomies]
-  (assert
-    (>
-      (count dichotomies) 4))
+  (println dichotomies)
+
+  (comment
+    (assert
+      (>
+        (count dichotomies) 4)))
 
   (let [empty-sheet (get
                       (yaml/parse-string
