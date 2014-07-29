@@ -26,3 +26,17 @@ entj:
         etiquette: 1
         performance: 1
         survival: 1
+
+intj:
+  attributes-ordinal:
+    physical: 3
+    social: 5
+    mental: 7
+  abilities-ordinal:
+    talents: 9
+    skills: 5
+    knowledges: 13
+  
+  sheet:
+    attributes:
+      intelligence: 3
