@@ -66,3 +66,19 @@
 
     ))
 
+(defn rand-values
+  "Increment given amount of points to random keys in given map."
+  [existing-values amount]
+
+  (def ev
+    (ref existing-values))
+
+  (doseq [i (range amount)]
+    (dosync
+      (alter ev update-in
+        [(rand-nth (keys existing-values))]
+        inc)
+      )
+    )
+  @ev
+  )
