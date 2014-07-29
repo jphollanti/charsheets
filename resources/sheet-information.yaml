@@ -1,0 +1,49 @@
+sheet:
+  attributes:
+    physical:
+      strength: 1
+      dexterity: 1
+      stamina: 1
+    social:
+      charisma: 1
+      manipulation: 1
+      appearance: 1
+    mental:
+      perception: 1
+      intelligence: 1
+      wits: 1
+
+  abilities:
+    talents:
+      alertness: 0
+      athletics: 0
+      brawl: 0
+      dodge: 0
+      empathy: 0
+      expression: 0
+      intimidation: 0
+      leadership: 0
+      legerdemain: 0
+      subterfuge: 0
+    skills:
+      animal_ken: 0
+      archery: 0
+      commerce: 0
+      crafts: 0
+      etiquette: 0
+      melee: 0
+      performance: 0
+      ride: 0
+      stealth: 0
+      survival: 0
+    knowledges:
+      academics: 0
+      hearth_wisdom: 0
+      investigation: 0
+      law: 0
+      linquistics: 0
+      medicine: 0
+      occult: 0
+      politics: 0
+      seneschal: 0
+      theology: 0
