@@ -30,9 +30,6 @@
   @mref
   )
 
-(defn update-vals [map vals f]
-  (reduce #(update-in % [%2] f) map vals))
-
 (defn add-values
   "Adds values to sheet."
   [ordinals class sheet empty-sheet]
