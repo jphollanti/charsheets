@@ -61,10 +61,10 @@
   [dichotomies]
   (println dichotomies)
 
-  (comment
-    (assert
-      (>
-        (count dichotomies) 4)))
+  (assert
+    (=
+      (count (keys dichotomies))
+      4))
 
   (let [type (keyword
                (clojure.string/trim
