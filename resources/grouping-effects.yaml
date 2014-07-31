@@ -64,6 +64,15 @@ estj:
     skills: 9
     knowledges: 5
 
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
+
 istj:
   attributes-ordinal:
     physical: 5
@@ -95,6 +104,15 @@ esfj:
     skills: 9
     knowledges: 5
 
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
+
 isfj:
   attributes-ordinal:
     physical: 7
@@ -104,6 +122,15 @@ isfj:
     talents: 13
     skills: 9
     knowledges: 5
+
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
 
 enfj:
   attributes-ordinal:
@@ -115,6 +142,15 @@ enfj:
     skills: 9
     knowledges: 13
 
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
+
 infj:
   attributes-ordinal:
     physical: 7
@@ -124,6 +160,15 @@ infj:
     talents: 5
     skills: 9
     knowledges: 13
+
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
 
 estp:
   attributes-ordinal:
@@ -135,6 +180,15 @@ estp:
     skills: 9
     knowledges: 13
 
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
+
 istp:
   attributes-ordinal:
     physical: 7
@@ -144,6 +198,15 @@ istp:
     talents: 5
     skills: 9
     knowledges: 13
+
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
 
 esfp:
   attributes-ordinal:
@@ -155,6 +218,15 @@ esfp:
     skills: 9
     knowledges: 13
 
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
+
 isfp:
   attributes-ordinal:
     physical: 7
@@ -164,6 +236,15 @@ isfp:
     talents: 5
     skills: 9
     knowledges: 13
+
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
 
 enfp:
   attributes-ordinal:
@@ -175,6 +256,15 @@ enfp:
     skills: 9
     knowledges: 13
 
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
+
 infp:
   attributes-ordinal:
     physical: 7
@@ -184,6 +274,15 @@ infp:
     talents: 5
     skills: 9
     knowledges: 13
+
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
 
 entp:
   attributes-ordinal:
@@ -195,6 +294,15 @@ entp:
     skills: 9
     knowledges: 13
 
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
+
 intp:
   attributes-ordinal:
     physical: 7
@@ -204,3 +312,12 @@ intp:
     talents: 5
     skills: 9
     knowledges: 13
+
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0

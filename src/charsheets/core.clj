@@ -62,14 +62,18 @@
       (>
         (count dichotomies) 4)))
 
-  (let [empty-sheet (get
+  (let [type (keyword
+               (clojure.string/trim
+                 (clojure.string/join ""
+                  (for [dichotomy (keys dichotomies)] (name dichotomy)))))
+        empty-sheet (get
                       (yaml/parse-string
                         (slurp "./resources/sheet-information.yaml"))
                       :sheet)
         grouping-effects (get
                            (yaml/parse-string
                              (slurp "./resources/grouping-effects.yaml"))
-                           :entj)
+                           type)
         sheet (ref (deep-merge empty-sheet (get grouping-effects :sheet)))
         attributes-sections (get grouping-effects :attributes-ordinal)
         abilities-sections (get grouping-effects :abilities-ordinal)]
