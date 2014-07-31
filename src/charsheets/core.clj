@@ -30,21 +30,26 @@
   @mref
   )
 
+(defn alter-sheet
+  [points sheet class ordinal]
+  (dosync
+    (doseq [mykey (keys points)]
+      (alter sheet
+        assoc-in
+        [class (key ordinal) mykey]
+        (get points mykey))
+      )
+
+    )
+  )
+
 (defn add-values
   "Adds values to sheet."
   [ordinals class sheet]
     (doseq [ordinal ordinals]
       (let [sheet-section (ref (get (get @sheet class) (key ordinal)))
-            rand (distribute-points @sheet-section (val ordinal))]
-        (dosync
-          (doseq [mykey (keys rand)]
-            (alter sheet
-              assoc-in
-              [class (key ordinal) mykey]
-              (get rand mykey))
-            )
-
-          )
+            points (distribute-points @sheet-section (val ordinal))]
+        (alter-sheet points sheet class ordinal)
         )
       ))
 
