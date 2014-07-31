@@ -31,12 +31,12 @@
   )
 
 (defn alter-sheet
-  [points sheet class section]
+  [points sheet class sub-section]
   (dosync
     (doseq [point-key (keys points)]
       (alter sheet
         assoc-in
-        [class (key section) point-key]
+        [class (key sub-section) point-key]
         (get points point-key))
       )
     )
@@ -44,11 +44,11 @@
 
 (defn add-section-points-to-sheet
   "Adds section points to sheet."
-  [sections class sheet]
-    (doseq [section sections]
-      (let [sheet-section (ref (get (get @sheet class) (key section)))
-            points (distribute-points @sheet-section (val section))]
-        (alter-sheet points sheet class section)
+  [sub-sections section sheet]
+    (doseq [sub-section sub-sections]
+      (let [sheet-sub-section (ref (get (get @sheet section) (key sub-section)))
+            points (distribute-points @sheet-sub-section (val sub-section))]
+        (alter-sheet points sheet section sub-section)
         )
       ))
 
