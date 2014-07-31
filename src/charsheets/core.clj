@@ -31,25 +31,24 @@
   )
 
 (defn alter-sheet
-  [points sheet class ordinal]
+  [points sheet class section]
   (dosync
-    (doseq [mykey (keys points)]
+    (doseq [point-key (keys points)]
       (alter sheet
         assoc-in
-        [class (key ordinal) mykey]
-        (get points mykey))
+        [class (key section) point-key]
+        (get points point-key))
       )
-
     )
   )
 
-(defn add-values
-  "Adds values to sheet."
-  [ordinals class sheet]
-    (doseq [ordinal ordinals]
-      (let [sheet-section (ref (get (get @sheet class) (key ordinal)))
-            points (distribute-points @sheet-section (val ordinal))]
-        (alter-sheet points sheet class ordinal)
+(defn add-section-points-to-sheet
+  "Adds section points to sheet."
+  [sections class sheet]
+    (doseq [section sections]
+      (let [sheet-section (ref (get (get @sheet class) (key section)))
+            points (distribute-points @sheet-section (val section))]
+        (alter-sheet points sheet class section)
         )
       ))
 
@@ -71,16 +70,12 @@
                            (yaml/parse-string
                              (slurp "./resources/grouping-effects.yaml"))
                            :entj)
-        sheet-tpl (deep-merge empty-sheet (get grouping-effects :sheet))
-        attributes-ordinal (get grouping-effects :attributes-ordinal)
-        abilities-ordinal (get grouping-effects :abilities-ordinal)]
+        sheet (ref (deep-merge empty-sheet (get grouping-effects :sheet)))
+        attributes-sections (get grouping-effects :attributes-ordinal)
+        abilities-sections (get grouping-effects :abilities-ordinal)]
 
-    (def sheet
-      (ref
-        sheet-tpl))
-
-    (add-values attributes-ordinal :attributes sheet)
-    (add-values abilities-ordinal :abilities sheet)
+    (add-section-points-to-sheet attributes-sections :attributes sheet)
+    (add-section-points-to-sheet abilities-sections :abilities sheet)
 
     @sheet
 
