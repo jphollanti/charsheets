@@ -13,25 +13,43 @@
     (apply merge-with deep-merge vals)
     (last vals)))
 
+(defn distribute-points
+  "Assign given points to random keys in the given map."
+  [m points]
+
+  (def mref
+    (ref m))
+
+  (doseq [i (range points)]
+    (dosync
+      (alter mref update-in
+        [(rand-nth (keys m))]
+        inc)
+      )
+    )
+  @mref
+  )
+
+(defn update-vals [map vals f]
+  (reduce #(update-in % [%2] f) map vals))
+
 (defn add-values
   "Adds values to sheet."
   [ordinals class sheet empty-sheet]
     (doseq [ordinal ordinals]
-      (dorun
-        (for
-          [i (range (val ordinal))]
-
-          (let [rand-ordinal (rand-nth (keys (get (get empty-sheet class) (key ordinal))))]
-            (dosync
-              (alter sheet update-in
-                [class (key ordinal) rand-ordinal]
-                inc)
-              )
+      (let [sheet-section (ref (get (get @sheet class) (key ordinal)))
+            rand (distribute-points @sheet-section (val ordinal))]
+        (dosync
+          (doseq [mykey (keys rand)]
+            (alter sheet
+              assoc-in
+              [class (key ordinal) mykey]
+              (get rand mykey))
             )
 
           )
-        ))
-    )
+        )
+      ))
 
 (defn generate
   "Creates a new sheet."
@@ -66,19 +84,3 @@
 
     ))
 
-(defn rand-values
-  "Increment given amount of points to random keys in given map."
-  [existing-values amount]
-
-  (def ev
-    (ref existing-values))
-
-  (doseq [i (range amount)]
-    (dosync
-      (alter ev update-in
-        [(rand-nth (keys existing-values))]
-        inc)
-      )
-    )
-  @ev
-  )
