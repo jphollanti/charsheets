@@ -13,6 +13,10 @@
     (apply merge-with deep-merge vals)
     (last vals)))
 
+(defn get-map-with-values-in-limit
+  [m]
+  (select-keys m (for [[k v] m :when (< v 5)] k)))
+
 (defn distribute-points
   "Assign given points to random keys in the given map."
   [m points]
@@ -23,7 +27,7 @@
   (doseq [i (range points)]
     (dosync
       (alter mref update-in
-        [(rand-nth (keys m))]
+        [(rand-nth (keys (get-map-with-values-in-limit @mref)))]
         inc)
       )
     )
