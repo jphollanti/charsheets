@@ -84,11 +84,13 @@
                   (for [dichotomy (keys dichotomies)] (name dichotomy))))
         empty-sheet (get
                       (yaml/parse-string
-                        (slurp "./resources/sheet-information.yaml"))
+                        (slurp
+                          (clojure.java.io/resource "sheet-information.yaml")))
                       :sheet)
         grouping-effects (get
                            (yaml/parse-string
-                             (slurp "./resources/grouping-effects.yaml"))
+                             (slurp
+                               (clojure.java.io/resource "grouping-effects.yaml")))
                            type)
         sheet (ref (deep-merge empty-sheet (get grouping-effects :sheet)))
         attributes-sections (get grouping-effects :attributes-ordinal)
