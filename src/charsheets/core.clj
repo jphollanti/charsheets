@@ -32,7 +32,7 @@
 
 (defn add-values
   "Adds values to sheet."
-  [ordinals class sheet empty-sheet]
+  [ordinals class sheet]
     (doseq [ordinal ordinals]
       (let [sheet-section (ref (get (get @sheet class) (key ordinal)))
             rand (distribute-points @sheet-section (val ordinal))]
@@ -74,8 +74,8 @@
       (ref
         sheet-tpl))
 
-    (add-values attributes-ordinal :attributes sheet empty-sheet)
-    (add-values abilities-ordinal :abilities sheet empty-sheet)
+    (add-values attributes-ordinal :attributes sheet)
+    (add-values abilities-ordinal :abilities sheet)
 
     @sheet
 
