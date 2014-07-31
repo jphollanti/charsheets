@@ -56,20 +56,32 @@
         )
       ))
 
+(defn validate-input
+  [dichotomies]
+  (future
+    (let [amount (count (keys dichotomies))
+          first (name (nth (keys dichotomies) 0))
+          second (name (nth (keys dichotomies) 1))
+          third (name (nth (keys dichotomies) 2))
+          fourth (name (nth (keys dichotomies) 3))]
+
+      (assert (= amount 4))
+      (assert (or (= first "e") (= first "i")))
+      (assert (or (= second "n") (= second "s")))
+      (assert (or (= third "t") (= third "f")))
+      (assert (or (= fourth "j") (= fourth "p")))
+      (println dichotomies)
+      )))
+
 (defn generate
   "Creates a new sheet."
   [dichotomies]
-  (println dichotomies)
 
-  (assert
-    (=
-      (count (keys dichotomies))
-      4))
+  (validate-input dichotomies)
 
   (let [type (keyword
-               (clojure.string/trim
-                 (clojure.string/join ""
-                  (for [dichotomy (keys dichotomies)] (name dichotomy)))))
+               (clojure.string/join ""
+                  (for [dichotomy (keys dichotomies)] (name dichotomy))))
         empty-sheet (get
                       (yaml/parse-string
                         (slurp "./resources/sheet-information.yaml"))
