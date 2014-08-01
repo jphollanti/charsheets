@@ -1,0 +1,44 @@
+alertness: null
+athletics: null
+brawl: null
+dodge: null
+empathy:
+  f: +
+  t: -
+expression:
+  e: +
+  i: -
+intimidation:
+  e: +
+  i: -
+leadership: null
+legerdemain: null
+subterfuge:
+  e: +
+  i: -
+animal_ken: null
+archery: null
+commerce: null
+crafts: null
+etiquette: null
+melee: null
+performance:
+  e: +
+  i: -
+ride: null
+stealth: null
+survival: null
+academics:
+  e: -
+  i: +
+hearth_wisdom:
+  e: -
+  i: +
+investigation: null
+law: null
+linquistics: null
+medicine: null
+occult: null
+politics: null
+seneschal: null
+theology: null

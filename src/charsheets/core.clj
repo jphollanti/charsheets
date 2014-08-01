@@ -90,7 +90,7 @@
         grouping-effects (get
                            (yaml/parse-string
                              (slurp
-                               (clojure.java.io/resource "grouping-effects.yaml")))
+                               (clojure.java.io/resource "type-effects.yaml")))
                            type)
         sheet (ref (deep-merge empty-sheet (get grouping-effects :sheet)))
         attributes-sections (get grouping-effects :attributes-ordinal)
