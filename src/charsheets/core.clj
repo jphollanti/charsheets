@@ -35,26 +35,40 @@
   )
 
 (defn alter-sheet
-  [points sheet class sub-section]
+  ([points sheet section sub-section]
   (dosync
     (doseq [point-key (keys points)]
       (alter sheet
         assoc-in
-        [class (key sub-section) point-key]
+        [section (key sub-section) point-key]
         (get points point-key))
       )
-    )
+    ))
+  ([points sheet section]
+  (dosync
+    (doseq [point-key (keys points)]
+      (alter sheet
+        assoc-in
+        [section point-key]
+        (get points point-key))
+      )
+    ))
   )
 
 (defn add-section-points-to-sheet
   "Adds section points to sheet."
-  [sub-sections section sheet]
+  ([sub-sections section sheet]
     (doseq [sub-section sub-sections]
       (let [sheet-sub-section (ref (get (get @sheet section) (key sub-section)))
             points (distribute-points @sheet-sub-section (val sub-section))]
         (alter-sheet points sheet section sub-section)
         )
       ))
+  ([section section-name sheet amount-points mybool]
+  (let [points (distribute-points section amount-points)]
+    (alter-sheet points sheet section-name)
+    ))
+  )
 
 (defn validate-input
   [dichotomies]
@@ -96,6 +110,7 @@
         attributes-sections (get grouping-effects :attributes-ordinal)
         abilities-sections (get grouping-effects :abilities-ordinal)]
 
+    (add-section-points-to-sheet (get empty-sheet :virtues) :virtues sheet 7 false)
     (add-section-points-to-sheet attributes-sections :attributes sheet)
     (add-section-points-to-sheet abilities-sections :abilities sheet)
 

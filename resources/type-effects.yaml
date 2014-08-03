@@ -27,6 +27,11 @@ entj:
         performance: 1
         survival: 1
 
+    virtues:
+      conscience: 1
+      self-control: 1
+      courage: 1
+
 intj:
   attributes-ordinal:
     physical: 3

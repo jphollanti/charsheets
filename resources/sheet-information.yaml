@@ -47,3 +47,19 @@ sheet:
       politics: 0
       seneschal: 0
       theology: 0
+
+  virtues:
+    conscience: 1
+    self-control: 1
+    courage: 1
+
+  freebie-points: 15
+
+  freebie-cost:
+    attributes: 5
+    abilities: 2
+    disciplines: 7
+    backgrounds: 1
+    willpower: 1
+    virtues: 2
+    humanity: 1
