@@ -1,5 +1,9 @@
 (ns charsheets.core)
-(require '[clj-yaml.core :as yaml])
+(require
+  '[clj-yaml.core :as yaml]
+  '[clojure.walk :as walk]
+  '[clojure.zip :as zz])
+
 
 (defn weighted-rand-choice [m]
   (let [w (reductions #(+ % %2) (vals m))
@@ -34,41 +38,12 @@
   @mref
   )
 
-(defn alter-sheet
-  ([points sheet section sub-section]
-  (dosync
-    (doseq [point-key (keys points)]
-      (alter sheet
-        assoc-in
-        [section (key sub-section) point-key]
-        (get points point-key))
-      )
-    ))
-  ([points sheet section]
-  (dosync
-    (doseq [point-key (keys points)]
-      (alter sheet
-        assoc-in
-        [section point-key]
-        (get points point-key))
-      )
-    ))
-  )
-
-(defn add-section-points-to-sheet
-  "Adds section points to sheet."
-  ([sub-sections section sheet]
-    (doseq [sub-section sub-sections]
-      (let [sheet-sub-section (ref (get (get @sheet section) (key sub-section)))
-            points (distribute-points @sheet-sub-section (val sub-section))]
-        (alter-sheet points sheet section sub-section)
-        )
-      ))
-  ([section section-name sheet amount-points mybool]
-  (let [points (distribute-points section amount-points)]
-    (alter-sheet points sheet section-name)
-    ))
-  )
+(defn flatten-keys
+  ([m] (flatten-keys {} [] m))
+  ([a ks m]
+    (if (map? m)
+      (reduce into (map (fn [[k v]] (flatten-keys a (conj ks k) v)) (seq m)))
+      (assoc a ks m))))
 
 (defn validate-input
   [dichotomies]
@@ -84,7 +59,6 @@
       (assert (or (= second "n") (= second "s")))
       (assert (or (= third "t") (= third "f")))
       (assert (or (= fourth "j") (= fourth "p")))
-      (println dichotomies)
       )))
 
 (defn generate
@@ -95,26 +69,23 @@
 
   (let [type (keyword
                (clojure.string/join ""
-                  (for [dichotomy (keys dichotomies)] (name dichotomy))))
-        empty-sheet (get
-                      (yaml/parse-string
+                 (for [dichotomy (keys dichotomies)] (name dichotomy))))
+        sheet-tpl (yaml/parse-string
+                      (slurp
+                        (clojure.java.io/resource "sheet-tpl.yaml")))
+        sheet-tpl-type-overrides ((yaml/parse-string
                         (slurp
-                          (clojure.java.io/resource "sheet-information.yaml")))
-                      :sheet)
-        grouping-effects (get
-                           (yaml/parse-string
-                             (slurp
-                               (clojure.java.io/resource "type-effects.yaml")))
-                           type)
-        sheet (ref (deep-merge empty-sheet (get grouping-effects :sheet)))
-        attributes-sections (get grouping-effects :attributes-ordinal)
-        abilities-sections (get grouping-effects :abilities-ordinal)]
+                          (clojure.java.io/resource "sheet-tpl-type-overrides.yaml")))
+                       type)
+        merged (deep-merge sheet-tpl sheet-tpl-type-overrides)
+        meta (merged :meta)
+        sheet (ref (merged :sheet))]
 
-    (add-section-points-to-sheet (get empty-sheet :virtues) :virtues sheet 7 false)
-    (add-section-points-to-sheet attributes-sections :attributes sheet)
-    (add-section-points-to-sheet abilities-sections :abilities sheet)
+    (doseq [keyval (flatten-keys (meta :points))]
+      (dosync
+        (alter sheet assoc-in
+          (key keyval)
+          (distribute-points (get-in @sheet (key keyval)) (val keyval)))))
 
-    @sheet
-
-    ))
+    @sheet))
 

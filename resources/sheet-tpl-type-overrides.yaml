@@ -1,0 +1,256 @@
+
+entj:
+  meta:
+    points:
+      attributes:
+        physical: 3
+        social: 4
+        mental: 3
+      abilities:
+        talents: 9
+        skills: 2
+        knowledges: 9
+
+  sheet:
+    attributes:
+      social:
+        charisma: 3
+        manipulation: 2
+      mental:
+        wits: 3
+
+    abilities:
+      talents:
+        expression: 1
+        leadership: 2
+        subterfuge: 1
+      skills:
+        etiquette: 1
+        performance: 1
+        survival: 1
+
+intj:
+  meta:
+    points:
+      attributes:
+        physical: 3
+        social: 5
+        mental: 4
+      abilities:
+        talents: 5
+        skills: 5
+        knowledges: 11
+
+    misc:
+      ability-accumulator: 50
+
+  sheet:
+    attributes:
+      mental:
+        intelligence: 3
+        wits: 2
+
+    abilities:
+      talents:
+        expression: 1
+        leadership: 2
+        subterfuge: 1
+      knowledges:
+        academics: 2
+
+estj:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 5
+        mental: 3
+      abilities:
+        talents: 13
+        skills: 9
+        knowledges: 5
+
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
+
+istj:
+  meta:
+    points:
+      attributes:
+        physical: 5
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 11
+
+  misc:
+    ability-accumulator: 50
+
+  sheet:
+    attributes:
+      mental:
+        perception: 2
+    abilities:
+      knowledges:
+        academics: 2
+
+esfj:
+  meta:
+    points:
+      attributes:
+        physical: 5
+        social: 7
+        mental: 3
+      abilities:
+        talents: 13
+        skills: 9
+        knowledges: 5
+
+  sheet:
+    attributes:
+      mental:
+        intelligence: 1
+
+    abilities:
+      talents:
+        leadership: 0
+
+isfj:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 13
+        skills: 9
+        knowledges: 5
+
+enfj:
+  meta:
+    points:
+      attributes:
+        physical: 3
+        social: 7
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13
+
+infj:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13
+
+estp:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13
+
+istp:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13
+
+esfp:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13
+
+isfp:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13
+
+enfp:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13
+
+infp:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13
+
+entp:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13
+
+intp:
+  meta:
+    points:
+      attributes:
+        physical: 7
+        social: 3
+        mental: 5
+      abilities:
+        talents: 5
+        skills: 9
+        knowledges: 13

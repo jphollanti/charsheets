@@ -1,3 +1,26 @@
+meta:
+  points:
+    attributes:
+      physical: 7
+      social: 5
+      mental: 3
+    abilities:
+      talents: 13
+      skills: 9
+      knowledges: 5
+    virtues: 7
+
+  freebie-points: 15
+
+  freebie-cost:
+    attributes: 5
+    abilities: 2
+    disciplines: 7
+    backgrounds: 1
+    willpower: 1
+    virtues: 2
+    humanity: 1
+
 sheet:
   attributes:
     physical:
@@ -52,14 +75,3 @@ sheet:
     conscience: 1
     self-control: 1
     courage: 1
-
-  freebie-points: 15
-
-  freebie-cost:
-    attributes: 5
-    abilities: 2
-    disciplines: 7
-    backgrounds: 1
-    willpower: 1
-    virtues: 2
-    humanity: 1
