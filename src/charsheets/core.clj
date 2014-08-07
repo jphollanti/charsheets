@@ -1,8 +1,6 @@
 (ns charsheets.core)
 (require
-  '[clj-yaml.core :as yaml]
-  '[clojure.walk :as walk]
-  '[clojure.zip :as zz])
+  '[clj-yaml.core :as yaml])
 
 
 (defn weighted-rand-choice [m]
