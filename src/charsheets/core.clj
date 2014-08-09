@@ -19,20 +19,31 @@
   [m]
   (select-keys m (for [[k v] m :when (< v 5)] k)))
 
+(defn get-points
+  [accumulation-probability remaining-points current-points]
+  (let [val (- accumulation-probability (rand-int 5))
+        newval (if (> (+ current-points val) 5) (- 5 current-points) val)]
+    (if (< newval 1)
+      1
+      (if (> newval remaining-points)
+        remaining-points
+        newval))))
+
 (defn distribute-points
   "Assign given points to random keys in the given map."
-  [m points]
+  [m points accumulation-probability]
 
   (def mref
     (ref m))
 
-  (doseq [i (range points)]
-    (dosync
-      (alter mref update-in
-        [(rand-nth (keys (get-map-with-values-in-limit @mref)))]
-        inc)
-      )
-    )
+  (let [i (atom points)]
+    (while (> @i 0)
+      (let [rkey (rand-nth (keys (get-map-with-values-in-limit @mref)))
+            assign (get-points accumulation-probability @i (get-in @mref [rkey]))]
+        (dosync
+          (alter mref update-in [rkey] (fn [curr] (+ curr assign))
+            ))
+      (swap! i (fn [curr] (- curr assign))))))
   @mref
   )
 
@@ -83,7 +94,11 @@
       (dosync
         (alter sheet assoc-in
           (key keyval)
-          (distribute-points (get-in @sheet (key keyval)) (val keyval)))))
+          (distribute-points (get-in @sheet (key keyval))
+            (val keyval)
+            (if (get-in meta [:point-accumulation (first (key keyval))])
+              (get-in @sheet [:virtues :courage])
+              0)))))
 
     @sheet))
 

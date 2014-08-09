@@ -1,5 +1,6 @@
 meta:
   points:
+    virtues: 7
     attributes:
       physical: 7
       social: 5
@@ -8,7 +9,11 @@ meta:
       talents: 13
       skills: 9
       knowledges: 5
-    virtues: 7
+
+  point-accumulation:
+    attributes: false
+    abilities: true
+    virtues: false
 
   freebie-points: 15
 
