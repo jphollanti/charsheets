@@ -20,8 +20,8 @@
   (select-keys m (for [[k v] m :when (< v 5)] k)))
 
 (defn get-points
-  [accumulation-probability remaining-points current-points]
-  (let [val (- accumulation-probability (rand-int 5))
+  [accumulation-probability remaining-points current-points value-provider]
+  (let [val (- accumulation-probability (value-provider))
         newval (if (> (+ current-points val) 5) (- 5 current-points) val)]
     (if (< newval 1)
       1
@@ -39,7 +39,7 @@
   (let [i (atom points)]
     (while (> @i 0)
       (let [rkey (rand-nth (keys (get-map-with-values-in-limit @mref)))
-            assign (get-points accumulation-probability @i (get-in @mref [rkey]))]
+            assign (get-points accumulation-probability @i (get-in @mref [rkey]) #(rand-int 5))]
         (dosync
           (alter mref update-in [rkey] (fn [curr] (+ curr assign))
             ))
