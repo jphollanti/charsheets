@@ -16,28 +16,28 @@
 
 (deftest get-points-accumulation-probability-gt-value-provider-test
   (testing "Accumulation probability is > what is produced by the value provider."
-    (is (= 2 (charsheets/get-points 3 2 0 #(inc 0))))))
+    (is (= 2 (charsheets/get-points 3 2 0 #(-> 1))))))
 
 (deftest get-points-accumulation-probability-lt-value-provider-test
   (testing "Accumulation probability is < what is produced by the value provider."
-    (is (= 1 (charsheets/get-points 1 2 0 #(inc 0))))))
+    (is (= 1 (charsheets/get-points 1 2 0 #(-> 1))))))
 
 (deftest get-points-accumulation-probability-eq-value-provider-test
   (testing "Accumulation probability is = what is produced by the value provider."
-    (is (= 1 (charsheets/get-points 2 2 0 #(inc 0))))))
+    (is (= 1 (charsheets/get-points 2 2 0 #(-> 1))))))
 
 (deftest get-points-not-enough-remaining-points
   (testing "Not enough remaining points."
-    (is (= 2 (charsheets/get-points 5 2 0 #(inc 0))))))
+    (is (= 2 (charsheets/get-points 5 2 0 #(-> 1))))))
 
 (deftest get-points-enough-remaining-points
   (testing "Enough remaining points."
-    (is (= 5 (charsheets/get-points 5 5 0 #(inc -1))))))
+    (is (= 5 (charsheets/get-points 5 5 0 #(-> 0))))))
 
 (deftest get-points-current-points-plus-new-points-over-the-limit
   (testing "Current points plus new points is over the limit."
-    (is (= 2 (charsheets/get-points 5 5 3 #(inc -1))))))
+    (is (= 2 (charsheets/get-points 5 5 3 #(-> 0))))))
 
 (deftest get-points-new-val-lt-1
   (testing "New value is less than 1."
-    (is (= 1 (charsheets/get-points 1 5 3 #(inc 4))))))
+    (is (= 1 (charsheets/get-points 1 5 3 #(-> 5))))))
